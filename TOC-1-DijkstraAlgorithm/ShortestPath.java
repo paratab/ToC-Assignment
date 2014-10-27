@@ -1,6 +1,5 @@
 import java.io.*;
-import java.lang.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class ShortestPath {
 
@@ -104,14 +103,14 @@ public class ShortestPath {
 			dest = g.find(reader.nextLine());
 			if (start != null && dest != null )
 				break;
-			System.out.println("Start or Destination vertex is NULL or they are same vertex.");
+			System.out.println("Start or Destination vertex is NULL");
 		}
 		System.out
 				.println("---------------------------------------------------------------------------");
 		DijkstraAlgorithm.Dijkstra(g, start, dest);
 		System.out
 				.println("---------------------------------------------------------------------------");
-
+		reader.close();
 	}
 
 	public static boolean isAlpha(String str) {

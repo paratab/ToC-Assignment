@@ -16,6 +16,11 @@ public class DijkstraAlgorithm {
 			}
 			Q.add(v);
 		}
+		System.out.println("[Initialize]");
+		for(Vertex v:Q){
+			System.out.println("dist["+v.name+"] = "+dist.get(v));
+		}
+		System.out.println("\n[Evaluate]\n==============================");
 		while (!Q.isEmpty()) {
 			u = Q.get(0);
 			min = dist.get(u);
@@ -30,6 +35,7 @@ public class DijkstraAlgorithm {
 					Q.remove(i);
 				}
 			}
+			System.out.println("Visit : "+u.name+" ,Dist["+u.name+"] = "+dist.get(u));
 			for (Vertex v : u.adjacent) {
 				alt = dist.get(u) + g.getWeight(u, v);
 				if (alt < dist.get(v)) {
@@ -37,19 +43,34 @@ public class DijkstraAlgorithm {
 					prev.put(v, u);
 				}
 			}
+			if(!Q.isEmpty())System.out.println("Evaluate distance of remain unvisited vertexs.");
+			else System.out.println("No more vertex to evaluate.");
+			for(Vertex v: Q){
+				System.out.print("Dist["+v.name+"] = "+dist.get(v));
+				System.out.print(" --> Path is : ");
+				displayPath(prev,start,v,false);
+				
+			}
+			System.out.println("==============================");
 		}
-		Stack<Vertex> s = new Stack<Vertex>();
-		u = dest;
-		s.push(u);
-		while (prev.get(u) != g.find(start.name)) {
-			s.push(prev.get(u));
-			u = prev.get(u);
-		}
-		s.push(prev.get(u));
-		System.out.print("ShortestPath(" + start.name + "," + dest.name + ") : ");
-		while (!s.isEmpty()) {
-			System.out.print(s.pop().name + " ");
-		}
-		System.out.println("\nDistance from ["+start.name+"] to ["+dest.name+"] is " + dist.get(dest));
+		System.out.print("[Finished]\nShortest path is :");
+		displayPath(prev,start,dest,true);
+		System.out.println("Distancs from ["+start.name+"] to ["+dest.name+"] = "+dist.get(dest));
+	}
+	
+	public static void displayPath(Map<Vertex,Vertex> prev,Vertex start,Vertex v,boolean end){
+		String path="";
+		Stack<String> st = new Stack<String>();
+		if(prev.get(v)!=null){
+			if(end) st.push(v.name);
+			while(v!=start){
+				st.push(prev.get(v).name);
+				v = prev.get(v);
+			}
+			while(!st.isEmpty()){
+				path = path+st.pop()+" ";
+			}
+		}else path = "Undefined.";
+		System.out.println(path);
 	}
 }
