@@ -6,12 +6,7 @@ public class RSAcryptosys {
 	public static final BigInteger E = new BigInteger("65537");
 	public static final BigInteger ID1 = new BigInteger("55011093");
 	public static final BigInteger ID2 = new BigInteger("55011357");
-	public static boolean isPrime(BigInteger num){
-		for(BigInteger i = new BigInteger("2");i.compareTo(num)==-1;i.add(BigInteger.ONE)){
-			if(num.mod(i)==BigInteger.ZERO) return false;
-		}
-		return true;
-	}
+
 	public static void main(String[] arg){
 		Random rgen = new Random(System.currentTimeMillis());
 		BigInteger p,q;
@@ -55,5 +50,6 @@ public class RSAcryptosys {
 		System.out.print("\nm == m' ? ");
 		if(m.equals(m_pi))System.out.println("Succeed");
 		else System.out.println("Fail");
+	
 	}
 }
