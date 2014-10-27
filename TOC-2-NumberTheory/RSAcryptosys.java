@@ -55,8 +55,5 @@ public class RSAcryptosys {
 		System.out.print("\nm == m' ? ");
 		if(m.equals(m_pi))System.out.println("Succeed");
 		else System.out.println("Fail");
-		
-		
-		
 	}
 }
