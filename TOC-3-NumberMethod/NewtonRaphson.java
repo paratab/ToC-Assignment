@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 import java.math.*;
 
@@ -8,7 +7,7 @@ import java.math.*;
  */
 public class NewtonRaphson {
 
-	public static final int NUM_PRECISION = 4000;
+	public static final int NUM_PRECISION = 2000;
 	public static final MathContext PRECISION = new MathContext(NUM_PRECISION, RoundingMode.HALF_UP);
 	public static final BigDecimal TWO = new BigDecimal("2");
 	public static final String PATH = "c://1.txt";
