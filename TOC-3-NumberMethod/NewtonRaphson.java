@@ -49,7 +49,7 @@ public class NewtonRaphson {
 		System.out.println("Number of percision is " + NUM_PRECISION);
 		System.out.println("================================================");
 
-		// Read file to get a actual value of sqr(a) 100,000 digit.
+		// Read file to get a actual value of sqr(a) from "PATH"
 		try {
 			br = new BufferedReader(new FileReader(PATH));
 			while ((line = br.readLine()) != null) {
